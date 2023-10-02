@@ -2,15 +2,17 @@ const express = require('express');
 
 const app = express();
 
-app.use('/',(req, res, next) => {
-  console.log("This will always run")
-  next();
-//...
-});
+// app.use((req, res, next) => {
+//   console.log("Dummy log in first middleware");
+//   next();
+// })
 
-app.use('/add-product',(req, res, next) => {
-  res.send("<h1>The 'Add Product Page'</h1>")
-//...
-});
+app.use("/dummy-route",(req, res, next) => {
+  res.send("<h1>Dummy data from /dummy-route route</h1>")
+})
+app.use("/",(req, res, next) => {
+  // console.log("Dummy log in second middleware");
+  res.send("<h1>Dummy data from / route</h1>")
+})
 
-app.listen(3002);
+app.listen(3002)
